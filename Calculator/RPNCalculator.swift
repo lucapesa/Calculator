@@ -36,13 +36,16 @@ class RPNCalculator: Printable {
         
     }
     
-    var variableValues = [String: Double]()
+    var variableValues: [String: Double] = [String: Double]() {
+        didSet {
+            descriptionChanged()
+        }
+    }
     
     var observers: [CalculatorObserver] = []
     
     private var ops = [String: Op]()
     private let consts : [String: Op] = ["π": .constant("π",M_PI)]
-    
     private var stack: [Op] = [Op]() {
         didSet {
             descriptionChanged()

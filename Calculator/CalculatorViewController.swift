@@ -95,9 +95,14 @@ class CalculatorViewController : UIViewController, CalculatorObserver {
                     currentValue = calculator.removeLastElement()?.description
                 }
             case "→M":
-                fallthrough
+                if isEnteringANumber {
+                    calculator.variableValues["M"] = doubleValue
+                }
             case "M":
-                fallthrough
+                if isEnteringANumber {
+                    pushCurrentValue()
+                }
+                currentValue = calculator.pushVariable("M")?.description
             default:
                 currentValue = nil
             }
