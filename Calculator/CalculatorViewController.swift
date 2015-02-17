@@ -25,7 +25,11 @@ class CalculatorViewController : UIViewController, CalculatorObserver {
     
     private var currentValue: String? {
         didSet {
-            calculatorDisplay.text = currentValue ?? "Error"
+            if currentValue == "" {
+                calculatorDisplay.text = " "
+            } else {
+                calculatorDisplay.text = currentValue ?? "Error"
+            }
         }
     }
     
@@ -81,13 +85,24 @@ class CalculatorViewController : UIViewController, CalculatorObserver {
                 }
                 currentValue = calculator.pushConstant("π")?.description
             case "⌫":
-                if let value = currentValue {
-                    currentValue = dropLast(value)
+                if isEnteringANumber {
+                    if let value = currentValue {
+                        if countElements(value) != 0 {
+                            currentValue = dropLast(value)
+                        }
+                    }
+                } else {
+                    currentValue = calculator.removeLastElement()?.description
                 }
             case "→M":
-                fallthrough
+                if isEnteringANumber {
+                    calculator.variableValues["M"] = doubleValue
+                }
             case "M":
-                fallthrough
+                if isEnteringANumber {
+                    pushCurrentValue()
+                }
+                currentValue = calculator.pushVariable("M")?.description
             default:
                 currentValue = nil
             }

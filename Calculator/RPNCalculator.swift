@@ -36,14 +36,21 @@ class RPNCalculator: Printable {
         
     }
     
-    var variableValues = [String: Double]()
+    var variableValues: [String: Double] = [String: Double]() {
+        didSet {
+            descriptionChanged()
+        }
+    }
     
     var observers: [CalculatorObserver] = []
     
     private var ops = [String: Op]()
     private let consts : [String: Op] = ["π": .constant("π",M_PI)]
-    
-    private var stack = [Op]()
+    private var stack: [Op] = [Op]() {
+        didSet {
+            descriptionChanged()
+        }
+    }
     
     init() {
         initOperations()
@@ -148,7 +155,6 @@ class RPNCalculator: Printable {
     }
     
     func evaluate() -> Double? {
-        descriptionChanged()
         if let (result, rest) = evaluate(stack) {
             println("Evaluated. Result: \(result), remaining stack: \(rest)")
             return result
@@ -189,6 +195,15 @@ class RPNCalculator: Printable {
         for observer in observers{
             observer.formulaChanged(self.description)
         }
+    }
+    
+    
+    func removeLastElement() -> Double? {
+        if !stack.isEmpty {
+            stack.removeLast()
+            return self.evaluate()
+        }
+        return nil
     }
 }
 
