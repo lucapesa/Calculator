@@ -28,7 +28,7 @@ class CalculatorViewController : UIViewController, CalculatorObserver {
             if currentValue == "" {
                 calculatorDisplay.text = " "
             } else {
-                calculatorDisplay.text = currentValue ?? "Error"
+                calculatorDisplay.text = currentValue ?? " "
             }
         }
     }
@@ -97,6 +97,8 @@ class CalculatorViewController : UIViewController, CalculatorObserver {
             case "→M":
                 if isEnteringANumber {
                     calculator.variableValues["M"] = doubleValue
+                    isEnteringANumber = false
+                    currentValue = calculator.evaluate()?.description
                 }
             case "M":
                 if isEnteringANumber {
@@ -121,7 +123,7 @@ class CalculatorViewController : UIViewController, CalculatorObserver {
     }
     
     @IBAction func reset() {
-        calculator.reset()
+        calculator.clear()
         self.calculatorDisplay.text? = "0"
         self.formulaDisplay.text = " "
     }
@@ -148,7 +150,51 @@ class CalculatorViewController : UIViewController, CalculatorObserver {
     }
     
     func formulaChanged(formula: String?) {
-        self.formulaDisplay.text? = formula ?? "Error"
+        self.formulaDisplay.text? = formula ?? " "
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

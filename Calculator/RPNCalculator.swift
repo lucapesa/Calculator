@@ -38,6 +38,7 @@ class RPNCalculator: Printable {
     
     var variableValues: [String: Double] = [String: Double]() {
         didSet {
+            println("didSet was called")
             descriptionChanged()
         }
     }
@@ -162,6 +163,32 @@ class RPNCalculator: Printable {
         return nil
     }
     
+    /*
+    private func reportErrors(var stack: [Op]) -> (String?, [Op])  {
+        if stack.isEmpty {
+            return ("Error, expected value in stack",[])
+        }
+        
+        switch stack.removeLast(){
+        case .operand(let value):
+            return (nil, stack)
+        case .variable(let name):
+            if variableValues[name] == nil {
+                return ("Error: expected variable value for \(name)", stack)
+            }
+        case .constant(let name, let value):
+            return (nil, stack)
+        case .unaryOperation(_, let funcion, _):
+            let (error, remaining) = reportErrors(stack)
+            return (error, remaining)
+        case .binaryOperation(_, let function, _):
+            if let (error1, remainder1) = reportErrors(stack) {
+                if let (error2, remainder2
+            }
+        }
+    }
+*/
+    
     func pushOperation(operation: String) -> Double? {
         if let op = ops[operation] {
             stack.append(op)
@@ -186,8 +213,16 @@ class RPNCalculator: Printable {
         return evaluate()
     }
     
-    func reset(){
+    func clear(){
+        clearStack()
+        clearVariables()
+    }
+    
+    func clearStack(){
         self.stack = [Op]()
+    }
+    
+    func clearVariables(){
         self.variableValues = [String: Double]()
     }
     
