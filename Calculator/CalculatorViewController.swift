@@ -28,7 +28,7 @@ class CalculatorViewController : UIViewController, CalculatorObserver {
             if currentValue == "" {
                 calculatorDisplay.text = " "
             } else {
-                calculatorDisplay.text = currentValue ?? " "
+                calculatorDisplay.text = currentValue ?? calculator.reportErrors() ?? " "
             }
         }
     }

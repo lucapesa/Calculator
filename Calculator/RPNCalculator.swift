@@ -156,6 +156,7 @@ class RPNCalculator: Printable {
     }
     
     func evaluate() -> Double? {
+        
         if let (result, rest) = evaluate(stack) {
             println("Evaluated. Result: \(result), remaining stack: \(rest)")
             return result
@@ -163,7 +164,7 @@ class RPNCalculator: Printable {
         return nil
     }
     
-    /*
+    
     private func reportErrors(var stack: [Op]) -> (String?, [Op])  {
         if stack.isEmpty {
             return ("Error, expected value in stack",[])
@@ -182,12 +183,24 @@ class RPNCalculator: Printable {
             let (error, remaining) = reportErrors(stack)
             return (error, remaining)
         case .binaryOperation(_, let function, _):
-            if let (error1, remainder1) = reportErrors(stack) {
-                if let (error2, remainder2
+            let (error1, remainder1) = reportErrors(stack)
+            let (error2, remainder2) = reportErrors(remainder1)
+            if error1 != nil {
+                return (error1, remainder2)
+            } else if error2 != nil {
+                return (error2, remainder2)
+            } else {
+                return (nil, remainder2)
             }
         }
+        
+        assert(true, "failed to interpret calculator error")
+        return (nil, [])
     }
-*/
+
+    func reportErrors() -> String? {
+        return reportErrors(stack).0
+    }
     
     func pushOperation(operation: String) -> Double? {
         if let op = ops[operation] {
@@ -231,7 +244,6 @@ class RPNCalculator: Printable {
             observer.formulaChanged(self.description)
         }
     }
-    
     
     func removeLastElement() -> Double? {
         if !stack.isEmpty {
