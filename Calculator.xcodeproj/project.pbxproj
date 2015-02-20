@@ -14,6 +14,7 @@
 		C740DFED1A8E947800CEBD3B /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740DFEC1A8E947800CEBD3B /* CalculatorTests.swift */; };
 		C740DFF71A8E94B100CEBD3B /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740DFF61A8E94B100CEBD3B /* CalculatorViewController.swift */; };
 		C740DFF91A8E94C200CEBD3B /* RPNCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740DFF81A8E94C200CEBD3B /* RPNCalculator.swift */; };
+		C76EC0501A97DAC00051BBBA /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76EC04F1A97DABF0051BBBA /* PlotViewController.swift */; };
 		C7FE8DC51A8EB93D00063462 /* HistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FE8DC41A8EB93D00063462 /* HistoryLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		C740DFEC1A8E947800CEBD3B /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		C740DFF61A8E94B100CEBD3B /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		C740DFF81A8E94C200CEBD3B /* RPNCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPNCalculator.swift; sourceTree = "<group>"; };
+		C76EC04F1A97DABF0051BBBA /* PlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
 		C7FE8DC41A8EB93D00063462 /* HistoryLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 			children = (
 				C740DFD61A8E947800CEBD3B /* AppDelegate.swift */,
 				C740DFDA1A8E947800CEBD3B /* Main.storyboard */,
+				C76EC04F1A97DABF0051BBBA /* PlotViewController.swift */,
 				C7FE8DC41A8EB93D00063462 /* HistoryLabel.swift */,
 				C740DFF61A8E94B100CEBD3B /* CalculatorViewController.swift */,
 				C740DFF81A8E94C200CEBD3B /* RPNCalculator.swift */,
@@ -222,6 +225,7 @@
 				C740DFF91A8E94C200CEBD3B /* RPNCalculator.swift in Sources */,
 				C740DFD71A8E947800CEBD3B /* AppDelegate.swift in Sources */,
 				C7FE8DC51A8EB93D00063462 /* HistoryLabel.swift in Sources */,
+				C76EC0501A97DAC00051BBBA /* PlotViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +351,7 @@
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -357,6 +362,7 @@
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
