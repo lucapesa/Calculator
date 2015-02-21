@@ -41,6 +41,9 @@ class CalculatorViewController : UIViewController, CalculatorObserver {
     
     override func viewDidLoad() {
          self.reset()
+        
+        title? = "Calculator"
+        
         calculator.observers.append(self)
     }
     
@@ -152,7 +155,17 @@ class CalculatorViewController : UIViewController, CalculatorObserver {
     func formulaChanged(formula: String?) {
         self.formulaDisplay.text? = formula ?? " "
     }
-    
+
+    /*
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var destination = segue.destinationViewController as? UIViewController
+        if let newDestination = destination?.childViewControllers.last as? UIViewController {
+            destination = newDestination
+        }
+        
+        switch segue.identifier
+    }
+*/
 }
 
 

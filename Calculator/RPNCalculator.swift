@@ -38,7 +38,6 @@ class RPNCalculator: Printable {
     
     var variableValues: [String: Double] = [String: Double]() {
         didSet {
-            println("didSet was called")
             descriptionChanged()
         }
     }

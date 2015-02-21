@@ -11,4 +11,16 @@ import UIKit
 
 class PlotViewController: UIViewController {
     
+    @IBOutlet weak var formulaLabel: UILabel!
+    
+    var formula: String! {
+        didSet{
+            updateUI()
+        }
+    }
+    
+    private func updateUI(){
+        formulaLabel?.text = self.formula ?? " "
+    }
+    
 }
